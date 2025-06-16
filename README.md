@@ -5,7 +5,7 @@ A React component library for displaying lessons from the Bankless Academy, buil
 ## Installation
 
 ```bash
-npm install @bankless-academy/sdk
+yarn add @bankless-academy/sdk
 ```
 
 ### Peer Dependencies
@@ -13,7 +13,7 @@ npm install @bankless-academy/sdk
 The SDK requires the following peer dependencies:
 
 ```bash
-npm install @farcaster/frame-host
+yarn add @farcaster/frame-host
 ```
 
 ## Usage
@@ -74,19 +74,19 @@ function MyComponent() {
 2. Install dependencies:
 
    ```bash
-   npm install
+   yarn install
    ```
 
 ### Building
 
 ```bash
-npm run build
+yarn build
 ```
 
 ### Testing
 
 ```bash
-npm test
+yarn test
 ```
 
 ## License

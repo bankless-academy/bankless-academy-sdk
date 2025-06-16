@@ -2,6 +2,7 @@
 node_modules
 .pnp
 .pnp.js
+.next
 
 # Testing
 coverage
@@ -22,6 +23,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# env
+.env
+
 # Editor directories and files
 .idea
 .vscode
@@ -41,4 +45,4 @@ yarn-error.log*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.pnp.* 
+.pnp.*

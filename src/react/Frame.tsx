@@ -5,7 +5,6 @@ import { getWalletClient } from "@wagmi/core";
 import { useAccount } from "wagmi";
 import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
-import { RpcTransactionRequest, WatchAssetParams } from "viem";
 
 const DEBUG = true;
 const LOADING_TIMEOUT_MS = 2000; // 2 seconds timeout for loading state

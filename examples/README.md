@@ -1,33 +1,33 @@
 # Bankless Academy SDK Examples
 
-This directory contains example implementations of the Bankless Academy SDK components.
+This directory contains example implementations of the Bankless Academy SDK components using Next.js.
 
 ## Examples
 
 ### Basic Usage
 
-`basic-usage.tsx` - Shows how to use the `Lessons` component to display a grid of lessons.
+`app/components/BasicUsage.tsx` - Shows how to use the `Lessons` component to display a grid of lessons.
 
 ### Frame Usage
 
-`frame-usage.tsx` - Demonstrates how to use the `Frame` component to display a single lesson.
+`app/components/FrameUsage.tsx` - Demonstrates how to use the `Frame` component to display a single lesson.
 
 ### Combined Usage
 
-`combined-usage.tsx` - Shows how to combine both `Lessons` and `Frame` components for a complete learning experience.
+`app/components/CombinedUsage.tsx` - Shows how to combine both `Lessons` and `Frame` components for a complete learning experience.
 
 ## Running the Examples in a Web Browser
 
 1. Install dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 2. Start the development server:
 
 ```bash
-npm start
+yarn dev
 ```
 
 This will:
@@ -40,13 +40,13 @@ This will:
 3. To build for production:
 
 ```bash
-npm run build
+yarn build
 ```
 
-4. To preview the production build:
+4. To start the production server:
 
 ```bash
-npm run preview
+yarn start
 ```
 
 ## Testing
@@ -60,22 +60,23 @@ The examples include tests that verify:
 To run the tests:
 
 ```bash
-npm test
+yarn test
 ```
 
 To run tests in watch mode:
 
 ```bash
-npm run test:watch
+yarn test:watch
 ```
 
 ## Development
 
 The examples use:
 
-- Vite for fast development and building
+- Next.js 14 for the framework
 - React 18 for rendering
 - TypeScript for type safety
+- Tailwind CSS for styling
 - Jest for testing
 
 All examples are rendered in a single page for easy comparison and testing.
