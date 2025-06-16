@@ -5,11 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { type ReactNode } from "react";
-import { injected, metaMask, walletConnect } from "wagmi/connectors";
-
-if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
-  throw new Error("Missing NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID environment variable");
-}
+import { injected, metaMask } from "wagmi/connectors";
 
 // Configure chains with fallback RPCs
 const chains = [mainnet] as const;
@@ -28,19 +24,7 @@ const transports = {
 };
 
 // Configure wallet connectors
-const connectors = [
-  injected(),
-  metaMask(),
-  walletConnect({
-    projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
-    metadata: {
-      name: "Bankless Academy SDK Examples",
-      description: "Example implementations of the Bankless Academy SDK components",
-      url: "https://app.banklessacademy.com",
-      icons: ["https://app.banklessacademy.com/app-icon.png"],
-    },
-  }),
-];
+const connectors = [injected(), metaMask()];
 
 // Create Wagmi config
 const config = createConfig({

@@ -3,8 +3,6 @@ import { FrameHost } from "@farcaster/frame-host";
 import { exposeToIframe } from "@farcaster/frame-host";
 import { getWalletClient } from "@wagmi/core";
 import { useAccount } from "wagmi";
-import { createConfig, http } from "wagmi";
-import { mainnet } from "wagmi/chains";
 
 const DEBUG = true;
 const LOADING_TIMEOUT_MS = 2000; // 2 seconds timeout for loading state
@@ -14,13 +12,6 @@ const FRAME_METADATA = {
   name: "Bankless Academy",
   iconUrl: "https://app.banklessacademy.com/app-icon.png",
 };
-
-const config = createConfig({
-  chains: [mainnet],
-  transports: {
-    [mainnet.id]: http(),
-  },
-});
 
 interface FrameProps {
   url: string;
@@ -93,7 +84,7 @@ export default function Frame({
   const [isMinimized, setIsMinimized] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const cleanupRef = useRef<(() => void) | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { address } = useAccount();
 
   const resetLoadingState = () => {
@@ -135,7 +126,7 @@ export default function Frame({
 
       let provider: EthereumProvider | undefined;
       try {
-        const client = await getWalletClient(config);
+        const client = await getWalletClient();
         if (client) {
           provider = {
             request: async (args: { method: string; params?: any[] }) => {

@@ -8,14 +8,6 @@ A React component library for displaying lessons from the Bankless Academy, buil
 yarn add @bankless-academy/sdk
 ```
 
-### Peer Dependencies
-
-The SDK requires the following peer dependencies:
-
-```bash
-yarn add @farcaster/frame-host
-```
-
 ## Usage
 
 ### Lessons Component
