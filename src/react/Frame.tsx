@@ -3,6 +3,8 @@ import { FrameHost } from "@farcaster/frame-host";
 import { exposeToIframe } from "@farcaster/frame-host";
 import { getWalletClient } from "@wagmi/core";
 import { useAccount } from "wagmi";
+import { createConfig, http } from "wagmi";
+import { mainnet } from "wagmi/chains";
 
 const DEBUG = true;
 const LOADING_TIMEOUT_MS = 2000; // 2 seconds timeout for loading state
@@ -12,6 +14,14 @@ const FRAME_METADATA = {
   name: "Bankless Academy",
   iconUrl: "https://app.banklessacademy.com/app-icon.png",
 };
+
+// Create a default config for getWalletClient
+const defaultConfig = createConfig({
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+});
 
 interface FrameProps {
   url: string;
@@ -126,7 +136,7 @@ export default function Frame({
 
       let provider: EthereumProvider | undefined;
       try {
-        const client = await getWalletClient();
+        const client = await getWalletClient(defaultConfig);
         if (client) {
           provider = {
             request: async (args: { method: string; params?: any[] }) => {

@@ -29,6 +29,7 @@ export default function Lessons({
     const fetchLessons = async () => {
       try {
         setLoading(true);
+        console.log("Fetching lessons from:", API_URL);
         const response = await fetch(API_URL, {
           method: "GET",
           headers: {

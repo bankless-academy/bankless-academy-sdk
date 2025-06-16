@@ -1,11 +1,14 @@
 "use client";
 
 import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { Frame } from "@bankless-academy/sdk";
+import { useState } from "react";
 
 export default function WalletConnect() {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
+  const [showFrame, setShowFrame] = useState(false);
 
   if (isConnected) {
     return (
@@ -32,16 +35,20 @@ export default function WalletConnect() {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {connectors.map((connector) => (
-        <button
-          key={connector.uid}
-          onClick={() => connect({ connector })}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-        >
-          {connector.name === "Injected" ? "Browser Wallet" : connector.name}
-        </button>
-      ))}
+    <div className="flex items-center gap-4">
+      <button
+        onClick={() => setShowFrame(true)}
+        className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+      >
+        Connect Wallet
+      </button>
+
+      {showFrame && (
+        <Frame
+          url="https://app.banklessacademy.com/connect"
+          onClose={() => setShowFrame(false)}
+        />
+      )}
     </div>
   );
 }
